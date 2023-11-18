@@ -17,7 +17,7 @@ permissions:
   issues: write         # write permissions are needed in order to create comments
   id-token: write
 
-concurrency: workflow-networking    # This wills ensure only a single workflow of merge to master is run at a time
+concurrency: workflow-networking.dev   # This wills ensure only a single workflow of merge to master is run at a time
 
 jobs:
   kics:
