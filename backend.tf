@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket = "terraform-git-backend"
-    key    = "path/to/my/key"
+    key    = "path/s3-bucket"
     region = "us-east-1"
     dynamodb_table = "terraform-table"
   }
