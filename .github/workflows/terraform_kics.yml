@@ -30,3 +30,4 @@ jobs:
     - name: Display KICS results
       run: |
         cat myResults/results.json
+      
