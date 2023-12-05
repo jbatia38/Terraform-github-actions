@@ -1,6 +1,10 @@
 name: Merge and pull request to main branch
 on:
   workflow_dispatch:
+    inputs:
+      lock_id: # This input will be used to provide the lock ID for the force-unlock job
+        description: 'Terraform Lock ID to force unlock'
+        required: true
   push:
     branches:
       - main
@@ -102,7 +106,8 @@ jobs:
         run: terraform apply
         continue-on-error: true
 
-        force-unlock:
+    # New job for force-unlocking Terraform state
+  force-unlock:
     name: "Force Unlock Terraform State"
     # This job runs only when manually triggered
     if: github.event_name == 'workflow_dispatch'
@@ -127,4 +132,4 @@ jobs:
         run: |
           terraform init
           terraform force-unlock -force ${{ github.event.inputs.lock_id }}
-        # Using the lock_id input from the workflow_dispatch to unlock the state
+        # Using the lock_id input from the workflow_dispatch to unlock the state   
