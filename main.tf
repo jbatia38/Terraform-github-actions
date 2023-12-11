@@ -30,3 +30,16 @@ resource "aws_security_group" "demo_sg_terraform" {
     cidr_blocks      = ["0.0.0.0/0"]
   }
 }
+
+resource "aws_instance" "aws_ubuntu" {
+  instance_type          = "t2.micro"
+  ami                    = data.aws_ami.ubuntu.id
+  user_data              = file("userdata.tpl")
+  vpc_security_group_ids = ["${aws_security_group.demo_sg_terraform.id}"]
+  key_name               = "EC2Instance"
+
+    tags = {
+    Name = "pul-request-ec2"
+  }
+
+}
