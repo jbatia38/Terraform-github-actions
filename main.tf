@@ -39,7 +39,7 @@ resource "aws_instance" "aws_ubuntu" {
   key_name               = "EC2Instance"
 
     tags = {
-    Name = "New_Git_EC2"
+    Name = "pul-request-ec2"
   }
 
 }
