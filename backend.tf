@@ -3,6 +3,6 @@ terraform {
     bucket = "terraform-git-backend"
     key    = "path/s3-bucket"
     region = "us-east-1"
-    dynamodb_table = "lock-table"
+    dynamodb_table = "new-table-terraform"
   }
 }
